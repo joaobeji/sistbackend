@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f3f3f3;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  .container-fluid {
+    background-color: #cbb3b3;
+  }
+  
+  .logo {
+    width: 80px;
+    height: auto;
+  }
+  
+  .navbar {
+    background-color: #333; /* Cor de fundo mais escura para a navbar */
+  }
+  
+  .navbar-nav .nav-link {
+    color: #fff; /* Cor do texto dos links */
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #ffcc00; /* Cor do texto dos links ao passar o mouse */
+  }
+  
+  .btn-outline-success {
+    background-color: #28a745;
+    color: white;
+    border-color: #28a745;
+  }
+  
+  .btn-outline-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+  }
+  
+  .card {
+    width: 400px; /* Definindo a largura do card */
+    border: 1px solid #1e0e0e; /* Borda leve ao card */
+    overflow: hidden; /* Garante que o conteúdo dentro do card não ultrapasse */
+  }
+  
+  .custom-img {
+    width: 100%; /* Faz a imagem ocupar a largura completa do card */
+    height: 200px; /* Define uma altura fixa para todas as imagens */
+    object-fit: cover; /* Ajusta a imagem sem distorcer */
+  }
+  
+  .card-container {
+    display: flex;
+    justify-content: center; /* Centraliza os cards horizontalmente */
+    flex-wrap: wrap; /* Permite que os cards se movam para a próxima linha, se necessário */
+    gap: 20px; /* Espaço entre os cards */
+    margin: 20px auto; /* Centraliza o contêiner na página */
+  }
+  
+  .modal-header {
+    background-color: #007bff; /* Cor de fundo do cabeçalho do modal */
+    color: white; /* Cor do texto do cabeçalho do modal */
+  }
+  
+  .modal-content {
+    border-radius: 0; /* Remove bordas arredondadas do modal */
+  }
+  
+  h2 {
+    text-align: center; /* Centraliza o título */
+  }
+  

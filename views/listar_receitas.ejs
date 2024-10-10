@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Listar Receitas</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container mt-5">
+    <h1 class="mb-4">Lista de Receitas</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Título</th>
+          <th>Descrição</th>
+          <th>Categoria</th>
+          <th>Tempo de Preparo</th>
+          <th>Rendimento</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% comidas.forEach(comida => { %>
+          <tr>
+            <td><%= comida.id %></td>
+            <td><%= comida.titulo %></td>
+            <td><%= comida.descricao %></td>
+            <td><%= comida.categoria %></td>
+            <td><%= comida.tempo_preparo %> min</td>
+            <td><%= comida.rendimento %></td>
+            <td>
+              <a href="/editar-receita/<%= comida.id %>" class="btn btn-warning">Editar</a>
+              <form action="/deletar-receita/<%= comida.id %>" method="POST" style="display:inline;">
+                <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja deletar esta receita?');">Deletar</button>
+              </form>
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+      
+      
+    </table>
+    <a href="/dashboard" class="btn btn-secondary">Voltar para a Dashboard</a>
+  </div>
+</body>
+</html>

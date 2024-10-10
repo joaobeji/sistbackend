@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Modo de Preparo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container mt-5">
+    <h1 class="mb-4">Editar Modo de Preparo</h1>
+    <form action="/atualizar-modo-preparo/<%= modo.id %>" method="POST">
+      <div class="mb-3">
+        <label for="comida_id" class="form-label">Receita ID</label>
+        <input type="number" class="form-control" id="comida_id" name="comida_id" value="<%= modo.comida_id %>" required>
+      </div>
+      <div class="mb-3">
+        <label for="descricao" class="form-label">Descrição</label>
+        <textarea class="form-control" id="descricao" name="descricao" rows="4" required><%= modo.descricao %></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="passo_numero" class="form-label">Número do Passo</label>
+        <input type="number" class="form-control" id="passo_numero" name="passo_numero" value="<%= modo.passo_numero %>" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Atualizar</button>
+      <a href="/listar-modos-preparo" class="btn btn-secondary">Voltar</a>
+    </form>
+  </div>
+</body>
+</html>

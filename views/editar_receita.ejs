@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Receita</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container mt-5">
+    <h1 class="mb-4">Editar Receita</h1>
+    <form action="/atualizar-receita/<%= receita.id %>" method="POST">
+      <div class="mb-3">
+        <label for="titulo" class="form-label">Título da Receita</label>
+        <input type="text" class="form-control" id="titulo" name="titulo" value="<%= receita.titulo %>" required>
+      </div>
+      <div class="mb-3">
+        <label for="descricao" class="form-label">Descrição</label>
+        <textarea class="form-control" id="descricao" name="descricao" rows="3" required><%= receita.descricao %></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="categoria" class="form-label">Categoria</label>
+        <input type="text" class="form-control" id="categoria" name="categoria" value="<%= receita.categoria %>" required>
+      </div>
+      <div class="mb-3">
+        <label for="imagem_url" class="form-label">URL da Imagem</label>
+        <input type="url" class="form-control" id="imagem_url" name="imagem_url" value="<%= receita.imagem_url %>" required>
+      </div>
+      <div class="mb-3">
+        <label for="tempo_preparo" class="form-label">Tempo de Preparo (minutos)</label>
+        <input type="number" class="form-control" id="tempo_preparo" name="tempo_preparo" value="<%= receita.tempo_preparo %>" required>
+      </div>
+      <div class="mb-3">
+        <label for="rendimento" class="form-label">Rendimento</label>
+        <input type="text" class="form-control" id="rendimento" name="rendimento" value="<%= receita.rendimento %>" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Atualizar</button>
+      <a href="/listar-receitas" class="btn btn-secondary">Voltar</a>
+    </form>
+  </div>
+</body>
+</html>

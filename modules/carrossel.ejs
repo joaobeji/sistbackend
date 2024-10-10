@@ -1,0 +1,99 @@
+<div class="carousel-container-top">
+  <div
+    id="carouselExampleIndicators"
+    class="carousel slide"
+    data-bs-ride="carousel"
+  >
+    <div class="carousel-indicators">
+      <button
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide-to="0"
+        class="active"
+        aria-current="true"
+        aria-label="Slide 1"
+      ></button>
+      <button
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide-to="1"
+        aria-label="Slide 2"
+      ></button>
+      <button
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide-to="2"
+        aria-label="Slide 3"
+      ></button>
+    </div>
+
+    <div class="carousel-inner">
+      <!-- Primeiro slide com link para outra página -->
+      <div class="carousel-item active">
+        <a href="../client/doces bolos e tortas/html/brigadeiro.html">
+          <img src="img/imagem-1.png" class="d-block w-100" alt="Imagem 1" />
+        </a>
+      </div>
+
+      <!-- Segundo slide com link para outra página -->
+      <div class="carousel-item">
+        <a href="../client/doces bolos e tortas/html/brigadeiro.html">
+          <img
+            src="img/foto-car-3.png.png"
+            class="d-block w-100"
+            alt="Imagem 2"
+          />
+        </a>
+      </div>
+
+      <!-- Terceiro slide com link para outra página -->
+      <div class="carousel-item">
+        <a href="../client/doces bolos e tortas/html/brigadeiro.html">
+          <img
+            src="img/Design sem nome (1).png"
+            class="d-block w-100"
+            alt="Imagem 3"
+          />
+        </a>
+      </div>
+    </div>
+
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Anterior</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Próximo</span>
+    </button>
+  </div>
+</div>
+
+<style>
+  .carousel {
+    width: 100%; /* Ocupa toda a largura da página */
+    object-fit: fill;
+  }
+
+  .carousel-inner img {
+    width: 100%; /* As imagens agora ocupam toda a largura */
+    height: 500px; /* Altura das imagens ajustada */
+    object-fit: cover; /* Ajusta o conteúdo da imagem para preencher a área sem distorções */
+  }
+
+  .btn-outline-success {
+    background-color: #28a745;
+    color: white;
+    border-color: #28a745;
+  }
+</style>
