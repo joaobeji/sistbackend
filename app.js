@@ -19,6 +19,12 @@ app.use(
   })
 );
 
+app.use(express.static(path.join(__dirname, 'views')));
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views'));
+});
+
 app.use("/img", express.static(path.join(__dirname, "/img")));
 
 // Configuração do motor de visualização EJS
@@ -291,159 +297,6 @@ app.get("/dashboard", (req, res) => {
     res.redirect("/");
   }
 });
-
-// Rota para editar uma receita
-app.get("/editar-receita/:id", (req, res) => {
-  const { id } = req.params;
-  const query = "SELECT * FROM comidas WHERE id = ?";
-
-  db.query(query, [id], (err, results) => {
-    if (err) {
-      console.error("Erro ao buscar a receita para editar:", err);
-      res.status(500).send("Erro ao buscar a receita");
-      return;
-    }
-    res.render("editar_receita", { receita: results[0] }); // Crie um arquivo editar_receita.ejs
-  });
-});
-
-// Rota para atualizar uma receita
-app.post("/atualizar-receita/:id", (req, res) => {
-  const { id } = req.params;
-  const { titulo, descricao, categoria, imagem_url, tempo_preparo, rendimento } = req.body;
-
-  const query = `
-    UPDATE comidas SET titulo = ?, descricao = ?, categoria = ?, imagem_url = ?, tempo_preparo = ?, rendimento = ?
-    WHERE id = ?
-  `;
-
-  db.query(query, [titulo, descricao, categoria, imagem_url, tempo_preparo, rendimento, id], (err) => {
-    if (err) {
-      console.error("Erro ao atualizar a receita:", err);
-      res.status(500).send("Erro ao atualizar a receita");
-      return;
-    }
-    res.redirect("/listar-receitas"); // Redireciona após a atualização
-  });
-});
-
-// Rota para deletar uma receita
-app.post("/deletar-receita/:id", (req, res) => {
-  const { id } = req.params;
-
-  const query = "DELETE FROM comidas WHERE id = ?";
-  db.query(query, [id], (err) => {
-    if (err) {
-      console.error("Erro ao deletar a receita:", err);
-      res.status(500).send("Erro ao deletar a receita");
-      return;
-    }
-    res.redirect("/listar-receitas"); // Redireciona após a deleção
-  });
-});
-
-// Rota para editar um ingrediente
-app.get("/editar-ingrediente/:id", (req, res) => {
-  const { id } = req.params;
-  const query = "SELECT * FROM ingredientes WHERE id = ?";
-
-  db.query(query, [id], (err, results) => {
-    if (err) {
-      console.error("Erro ao buscar o ingrediente para editar:", err);
-      res.status(500).send("Erro ao buscar o ingrediente");
-      return;
-    }
-    res.render("editar_ingrediente", { ingrediente: results[0] }); // Crie um arquivo editar_ingrediente.ejs
-  });
-});
-
-// Rota para atualizar um ingrediente
-app.post("/atualizar-ingrediente/:id", (req, res) => {
-  const { id } = req.params;
-  const { comida_id, descricao, quantidade, unidade } = req.body;
-
-  const query = `
-    UPDATE ingredientes SET comida_id = ?, descricao = ?, quantidade = ?, unidade = ?
-    WHERE id = ?
-  `;
-
-  db.query(query, [comida_id, descricao, quantidade, unidade, id], (err) => {
-    if (err) {
-      console.error("Erro ao atualizar o ingrediente:", err);
-      res.status(500).send("Erro ao atualizar o ingrediente");
-      return;
-    }
-    res.redirect("/listar-ingredientes"); // Redireciona após a atualização
-  });
-});
-
-// Rota para deletar um ingrediente
-app.post("/deletar-ingrediente/:id", (req, res) => {
-  const { id } = req.params;
-
-  const query = "DELETE FROM ingredientes WHERE id = ?";
-  db.query(query, [id], (err) => {
-    if (err) {
-      console.error("Erro ao deletar o ingrediente:", err);
-      res.status(500).send("Erro ao deletar o ingrediente");
-      return;
-    }
-    res.redirect("/listar-ingredientes"); // Redireciona após a deleção
-  });
-});
-
-// Rota para editar um modo de preparo
-app.get("/editar-modo-preparo/:id", (req, res) => {
-  const { id } = req.params;
-  const query = "SELECT * FROM modos_preparo WHERE id = ?";
-
-  db.query(query, [id], (err, results) => {
-    if (err) {
-      console.error("Erro ao buscar o modo de preparo para editar:", err);
-      res.status(500).send("Erro ao buscar o modo de preparo");
-      return;
-    }
-    res.render("editar_modo_preparo", { modo: results[0] }); // Crie um arquivo editar_modo_preparo.ejs
-  });
-});
-
-// Rota para atualizar um modo de preparo
-app.post("/atualizar-modo-preparo/:id", (req, res) => {
-  const { id } = req.params;
-  const { comida_id, descricao, passo_numero } = req.body;
-
-  const query = `
-    UPDATE modos_preparo SET comida_id = ?, descricao = ?, passo_numero = ?
-    WHERE id = ?
-  `;
-
-  db.query(query, [comida_id, descricao, passo_numero, id], (err) => {
-    if (err) {
-      console.error("Erro ao atualizar o modo de preparo:", err);
-      res.status(500).send("Erro ao atualizar o modo de preparo");
-      return;
-    }
-    res.redirect("/listar-modos-preparo"); // Redireciona após a atualização
-  });
-});
-
-// Rota para deletar um modo de preparo
-app.post("/deletar-modo-preparo/:id", (req, res) => {
-  const { id } = req.params;
-
-  const query = "DELETE FROM modos_preparo WHERE id = ?";
-  db.query(query, [id], (err) => {
-    if (err) {
-      console.error("Erro ao deletar o modo de preparo:", err);
-      res.status(500).send("Erro ao deletar o modo de preparo");
-      return;
-    }
-    res.redirect("/listar-modos-preparo"); // Redireciona após a deleção
-  });
-});
-
-
-
 
 // Iniciar o servidor
 app.listen(PORT, HOST, () => {
